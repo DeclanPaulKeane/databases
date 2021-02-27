@@ -4,12 +4,15 @@ version: '3.1'
 services:
 
   db:
-    image: postgres
-    restart: always
+    image: postgres:9.5
     environment:
-      POSTGRES_DB: kong
-      POSTGRES_USER: kong
-      POSTGRES_PASSWORD: 7layer
+      POSTGRES_DB: admin
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    restart: on-failure
+    deploy:
+      restart_policy:
+        condition: on-failure
   adminer:
     image: adminer
     restart: always
